@@ -1,0 +1,19 @@
+# Core
+pandas
+numpy
+
+# Notebooks
+jupyter
+ipykernel
+
+# Visualization
+matplotlib
+plotly
+seaborn
+
+# Excel/Parquet IO
+openpyxl
+pyarrow
+#registra los métodos encadenables en DataFrame
+pyjanitor
+
