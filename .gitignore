@@ -11,7 +11,8 @@ db/
 
 # Datos crudos
 data/raw/
-
+# ppt
+ppt/
 # SO
 .DS_Store
 Thumbs.db
