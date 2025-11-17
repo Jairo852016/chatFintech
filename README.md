@@ -1,62 +1,145 @@
-# Online Retail – Data Acquisition, Cleaning, EDA, and Visualization
 
-## Problem Description
+# 📈 FinChat – Asistente Inteligente de Análisis Bursátil
 
-The **Online Retail** dataset contains transactional records from a UK-based, registered non‑store online retailer that primarily sells unique, all‑occasion gifts. The data covers all transactions between **2010‑12‑01** and **2011‑12‑09**, with more than **541k records**. Each record includes invoice number, product code and description, quantity, invoice datetime, unit price, customer ID, and customer country.
+FinChat es una aplicación interactiva construida en **Python + Streamlit** que integra análisis cuantitativo, descarga de datos bursátiles, consulta de noticias y capacidades de IA generativa utilizando la API de **OpenAI**.
 
-### Objective
-Analyze and understand sales and customer behavior patterns using a three‑part workflow:
-
-1. **Data Acquisition & Cleaning**  
-   - Import the dataset from the original source file.  
-   - Address missing values and inconsistent rows (e.g., canceled invoices, negative quantities).  
-   - Produce a clean, analysis‑ready table and store it in a **SQLite** database.
-
-2. **Exploratory Data Analysis (EDA)**  
-   - Describe the dataset structure and variables.  
-   - Generate high‑level metadata: date range, number of customers, products, countries, and total revenue.  
-   - Compute domain‑specific features like **Revenue = Quantity × UnitPrice**.
-
-3. **Visualization**  
-   - Create visualizations to tell the story of the data, e.g., monthly sales trends, top countries by revenue, and top products by quantity.  
-   - Save all plots as image files for reporting.
-
-### Deliverables
-- `online_retail_clean.db` with a `transactions` table.
-- Notebook or scripts that reproduce the cleaning, EDA, and visualizations.
-- Saved images (PNG) for each plot.
-- This `README.md` with the problem description and scope.
-
-### Notes
-- Canceled invoices typically start with `C` in `InvoiceNo`.  
-- Negative quantities often reflect returns. These are excluded for sales analysis.  
-- Records with missing `CustomerID` or `Description` will be removed for consistent aggregations.
+El asistente está diseñado para analizar el ETF **SPY** y las **7 Magníficas**:
+- AAPL  
+- MSFT  
+- NVDA  
+- GOOGL  
+- AMZN  
+- META  
+- TSLA  
 
 ---
 
-## Project Structure (suggested)
+## 🧠 Funcionalidades principales
+
+### ✅ 1. Chat financiero inteligente
+- Asistente entrenado con prompts avanzados.
+- Protegido contra *prompt injection*.
+- Usa datos cuantitativos reales (volatilidad, momentum, estacionalidad, máximos/mínimos).
+- Conversación en lenguaje natural.
+
+---
+
+## 📥 2. Descarga automática de datos financieros
+La app descarga precios históricos con:
+- `yfinance`
+- Cálculo de:
+  - Volatilidad anualizada (20 días por defecto)
+  - Momentum (10 días por defecto)
+  - Máximos y mínimos intradía
+  - Estacionalidad promedio mensual
+
+---
+
+## 📰 3. Noticias bursátiles por ticker
+- Obtiene titulares desde la API de OpenAI.
+- Muestra título, fecha, fuente y enlace.
+- Guarda las noticias por ticker en el estado de sesión.
+
+---
+
+## 🧠 4. Resumen de noticias con IA
+- Resume las últimas 5 noticias.
+- Enfocado a traders intradía y swing.
+- Formato de máximo 5 viñetas.
+- Se inserta directamente en el chat.
+
+---
+
+## 📊 5. Análisis macro cuantitativo
+El módulo analiza:
+- Tendencia reciente
+- Volatilidad
+- Momentum
+- Rango intradía
+- Estacionalidad del activo
+- Comportamiento relativo frente al promedio
+
+Incluye:
+- Interpretación automática generada con IA.
+- Explicación para traders: sesgo alcista/bajista, riesgos y lectura del mercado.
+
+---
+
+## 🎨 6. Interfaz tipo ChatGPT
+- Chat estilizado con Dark Mode.
+- Burbujas de usuario y asistente.
+- Scroll automático.
+- Todos los botones están en el **sidebar** y agregan respuestas directamente al chat.
+
+---
+
+## ⚙️ 7. Arquitectura de carpetas
+
 ```
-online-retail-project/
-├─ data/                  # raw and intermediate data (e.g., original .xlsx)
-├─ db/                    # SQLite database output
-├─ notebooks/             # Jupyterf or ETL/EDA/plots
-├─ reports/               # saved charts and text summaries
-└─ README.md
+chatFintech/
+│── app.py
+│── config.py
+│── README.md  👈 (este archivo)
+│
+├── core/
+│   ├── financial_data.py
+│   ├── news_fetcher.py
+│   ├── analysis_engine.py
+│   ├── openai_client.py
+│
+└── requirements.txt
 ```
 
-## Quick Start
+---
+
+## 🚀 8. Cómo ejecutar la aplicación
+
+### 1️⃣ Crear entorno virtual
 ```bash
-# Create a virtual environment (optional)
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-
-pip install -r requirements.txt  # if provided
-
-# Example script entry points (to be added)
-# python notebooks/01_clean.ipynb
-# python notebooks/02_eda.ipynb
-# python notebooks/03_visualization.ipynb
 ```
 
-## License
-For academic purposes within the Yachay Tech Data Science program.
+### 2️⃣ Activar entorno  
+Windows:
+```bash
+.venv\Scriptsctivate
+```
+
+Linux/Mac:
+```bash
+source .venv/bin/activate
+```
+
+### 3️⃣ Instalar dependencias
+```bash
+pip install -r requirements.txt
+```
+
+### 4️⃣ Ejecutar la app
+```bash
+streamlit run app.py
+```
+
+---
+
+## 🔐 API Key requerida
+La app utiliza:
+- `OpenAI API` → para IA y noticias
+
+Se coloca desde el sidebar.
+
+---
+
+## 📘 Licencia
+Proyecto académico para la materia **Fundamentos de Inteligencia Artificial**.  
+Uso libre para fines educativos.
+
+---
+
+## 👨‍💻 Autor
+**Jairo Pérez**  
+Maestría en Ciencia de Datos  
+Proyecto final – Inteligencia Artificial
+
+---
+
