@@ -44,7 +44,7 @@ custom_css = """
 .chat-container {
     background: rgba(15, 23, 42, 0.85);
     border-radius: 24px;
-    padding: 1.8rem 2.2rem;
+    padding: 0.1rem 0.1rem;
     box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     border: 1px solid rgba(148, 163, 184, 0.3);
 }
