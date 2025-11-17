@@ -1,4 +1,6 @@
 
+https://chatfintech-fia.streamlit.app/
+
 # 📈 FinChat – Asistente Inteligente de Análisis Bursátil
 
 FinChat es una aplicación interactiva construida en **Python + Streamlit** que integra análisis cuantitativo, descarga de datos bursátiles, consulta de noticias y capacidades de IA generativa utilizando la API de **OpenAI**.
